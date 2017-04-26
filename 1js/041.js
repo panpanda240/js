@@ -1,24 +1,17 @@
 
-function showPic(whichpic, srctype) {
+function showPic(whichpic) {
 	var source = whichpic.getAttribute("href");
-    var placeholder = document.getElementById("placeholder");
-	var der=document.getElementById("der");
-	// var links = gallery.getElementsByTagName("a");
-	// for (var i=0; i< links.length;i++){
-	// 	if(i%2===0){
-	// 	placeholder.setAttribute("src", source);
-		
-		
-	// 	}else{
-	// 	der.setAttribute("src", source);
-          
-	// 	}
+    var placeholder = document.getElementById("placeholder");//第一张图片
+	var der=document.getElementById("der");//第二张图片
 	
-	// }
-	if (srctype == 1)
-		placeholder.setAttribute("src", source);
-	else
+	var srctype=parseInt(whichpic.getAttribute("id"))//解析id的字符串，并返回一个整数。
+	if (srctype %2 == 0){
+	//如果返回的数是偶数就设置source的图片在der第二张图片	
 		der.setAttribute("src", source);
+	}
+	else{
+		placeholder.setAttribute("src", source);
+	}
 
 	return false;
 
@@ -30,11 +23,8 @@ function prepareGallery() {
 	var links = gallery.getElementsByTagName("a");
 	for ( var i=0; i < links.length; i++) {
 		links[i].onclick = function() {
-			if (i % 2 == 0) {
-				return showPic(this, 1);
-			} else {
-				return showPic(this, 2);
-			}
+			
+				return showPic(this);
 		}
 	}
 }
@@ -53,7 +43,6 @@ function addLoadEvent(func){
 	}
 }
 addLoadEvent(prepareGallery);
-//addLoadEvent(showPic);
 
 
 
