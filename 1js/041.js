@@ -44,7 +44,7 @@ function addLoadEvent(func){
 }
 addLoadEvent(prepareGallery);
 addLoadEvent(allery);
-
+addLoadEvent(switchButton);
 
 
 
@@ -91,3 +91,30 @@ function allery() {
 	}
 
 }
+
+function varExample(){
+if(!document.getElementById("der")) return false;
+if(!document.getElementById("placeholder")) return false;
+if(!der.getAttribute("src")) return false;
+if(!placeholder.getAttribute("src")) return false;
+var dersrc=der.getAttribute("src");
+var  placeholdersrc=placeholder.getAttribute("src");
+placeholder.setAttribute("src", dersrc);
+der.setAttribute("src", placeholdersrc);
+}
+
+function test() {
+    if (0) return false;
+
+}
+function switchButton(){
+  if(!document.getElementsByTagName) return false;
+if(!document.getElementById) return false;
+if(!document.getElementById("btn")) return false;
+var butt=document.getElementById("btn");
+butt.onclick=function(){
+	return varExample()? false:true;
+
+ }
+}
+
