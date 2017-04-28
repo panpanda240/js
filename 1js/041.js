@@ -43,7 +43,7 @@ function addLoadEvent(func){
 	}
 }
 addLoadEvent(prepareGallery);
-addLoadEvent(Gallery);
+addLoadEvent(allery);
 
 
 
@@ -67,30 +67,27 @@ function shuffle(array) {
   return array;
 }
 
+ function arra(){
+   
+   var id=document.getElementById("imagegallery");
+   var text=id.getElementsByTagName("a");
+   var arr= new Array();
+   for (var i = 0;i<text.length;i++) {
+	arr[i]=text[i].lastChild.nodeValue;
+   }
 
+   shuffle(arr);
 
-
-
-function Gallery() {
-var obj=document.getElementById("a"); 
-//浏览器获取节点文本的方法 
-function text() { 
-	var t=""; 
-//如果传入的是元素，则继续遍历其子元素 
-//否则假定它是一个数组 
-obj=obj.childNodes||obj; 
-//遍历所有子节点 
-for(var j=0;j<obj.length;j++){ 
-//如果不是元素，追加其文本值 
-//否则，递归遍历所有元素的子节点 
-t+=obj[j].nodeType!=1? obj[j].nodeValue:text(obj[j].childNodes); 
-} 
-//返回文本 
-return t; 
-} 
-
-var but=document.getElementById("but");
-    but.onclick=function(){
-	return shuffle(text(obj));
+   for (var i = 0;i<text.length;i++) {
+	text[i].lastChild.nodeValue=arr[i];
   }
+
+}
+
+function allery() {
+	var button = document.getElementById("but");
+		button.onclick = function() {
+		return arra();
+	}
+
 }
